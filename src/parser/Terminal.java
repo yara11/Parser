@@ -2,6 +2,7 @@
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import parser.Literals;
 
 public class Terminal implements Node {
     
@@ -10,6 +11,9 @@ public class Terminal implements Node {
     
     public Terminal(String value) {
     	this.value = value;
+        if(this.value.equals(Literals.EPS)){
+            this.isEpsilon = true;
+        }
     }
     @Override
     public Boolean isTerminal() {
