@@ -27,4 +27,9 @@ public class Terminal implements Node {
     public Set<Terminal> getFirst() {
         return new HashSet<>(Arrays.asList(this));
     }
+    
+    @Override
+    public String toString() {
+        return value;
+    }
 }

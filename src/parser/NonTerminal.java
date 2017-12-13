@@ -6,7 +6,7 @@ public class NonTerminal implements Node {
     
     private Set<Terminal> First = null;
     private Set<Terminal> Follow = new HashSet<>();
-    
+    private String name;
     ArrayList<ProductionRule> productions = new ArrayList<ProductionRule>();
 
     @Override
@@ -22,19 +22,7 @@ public class NonTerminal implements Node {
         First = new HashSet<>();
         
         for(ProductionRule prod: productions) {
-            ArrayList<Node> seq = prod.getSequence();
-            for(Node node: seq) {
-                // Either this is the first node, or the preceding nodes
-                // go to epsilon
-                
-                // Compute FIRST of this node
-                First.addAll(node.getFirst());
-                // If this node goes to epsilon, continue to the next node
-                // if (X -> Y1Y2..Yn and Yj = a and Y1..j-1->eps)
-                // then a is in FIRST(X)
-                if(node.isTerminal() || !((NonTerminal) node).goesToEps())
-                    break;
-            }
+            First.addAll(prod.getFirst());
         }
         return First;
     }
@@ -46,5 +34,11 @@ public class NonTerminal implements Node {
                 return true;
         }
         return false;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return name;
     }
 }
