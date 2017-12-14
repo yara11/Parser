@@ -7,6 +7,8 @@ public class Parser {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ReadFile read=new ReadFile();
+        read.read();
     }
     
 }
