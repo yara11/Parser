@@ -13,6 +13,15 @@ public class NonTerminal implements Node {
     public Boolean isTerminal() {
     	return false;
     }
+
+    
+    
+    @Override
+    public String getValue() {
+        return name;
+    }
+    
+    
     
     @Override
     public Set<Terminal> getFirst() {

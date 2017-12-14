@@ -19,6 +19,14 @@ public class Terminal implements Node {
     public Boolean isTerminal() {
     	return true;
     }
+
+    @Override
+    public String getValue() {
+        return value;
+    }
+    
+    
+    
     public Boolean isEps() {
         return this.isEpsilon;
     }
