@@ -20,7 +20,7 @@ public class ReadFile {
     String file;
     ArrayList<String> nonTerminals=new ArrayList<>();
     ArrayList<String> rules=new ArrayList<>();
-    HashMap<String, Node> nonTerminal = new HashMap<String, Node>();
+   static HashMap<String, Node> nonTerminal = new HashMap<String, Node>();
     NodeFactory factory=new NodeFactory();
     void concatinateFile(){
     String fileName = "input.txt";
@@ -59,6 +59,7 @@ public class ReadFile {
        for(String key:nonTerminals){
            Node nT=factory.getNonTerminal();
            ((NonTerminal) nT).setName(key);
+           
            nonTerminal.put(key,nT);
        }
    }
@@ -118,12 +119,7 @@ public class ReadFile {
        System.out.println();
      }
    }
-   void print1(){
-       for (String key : nonTerminal.keySet()) {
-      Node n= nonTerminal.get(key);
-      System.out.println(((NonTerminal)n).getName());
-     }
-   }
+  
    void read(){
        concatinateFile();
        split();
