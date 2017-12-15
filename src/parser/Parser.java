@@ -9,6 +9,9 @@ public class Parser {
         // TODO code application logic here
         ReadFile read=new ReadFile();
         read.read();
+        LeftFactoring factor=new LeftFactoring();
+        factor.leftFactorAll();
+        read.print();
     }
     
 }

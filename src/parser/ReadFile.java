@@ -80,7 +80,7 @@ public class ReadFile {
                sequence=new ArrayList<>();
                s = splitOr1;
                s= s.trim();
-               splitSpace=s.split("\\s+");
+               splitSpace=s.split("\\s+");  
                for (String splitSpace1 : splitSpace) {
                    ss = splitSpace1;
                    ss= ss.trim();
@@ -125,6 +125,6 @@ public class ReadFile {
        split();
        fillMap();
        fillProductions();
-      print();
+     // print();
    }
 }
