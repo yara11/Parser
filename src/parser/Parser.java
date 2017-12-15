@@ -9,8 +9,21 @@ public class Parser {
         // TODO code application logic here
         ReadFile read=new ReadFile();
         read.read();
+        System.out.println();
+        System.out.println("***After read***");
+         System.out.println();
+        read.print();
         LeftFactoring factor=new LeftFactoring();
         factor.leftFactorAll();
+         System.out.println();
+        System.out.println("***After left factoring***");
+         System.out.println();
+        read.print();
+        EliminateLeftRecursion eliminateLeftRecursion=new EliminateLeftRecursion();
+        eliminateLeftRecursion.eliminateleftrecursion();
+         System.out.println();
+        System.out.println("***After eliminating left recursion***");
+         System.out.println();
         read.print();
     }
     
