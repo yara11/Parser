@@ -21,12 +21,12 @@ public class ParsingTable {
     public static void constructParsingTable() {
         int id = 0;
         for (Terminal t : terminals) {
-            terminalsMap.put(t.getValue(), id++);
+            terminalsMap.put(t.toString(), id++);
         }
 
         id = 0;
         for (NonTerminal t : nonTerminals) {
-            nonTerminalsMap.put(t.getValue(), id++);
+            nonTerminalsMap.put(t.toString(), id++);
         }
 
         
@@ -36,26 +36,57 @@ public class ParsingTable {
                
                 
                 for (Terminal first : prod.getFirst()) {
+                    int enter=0;
                     if (first.isEps()) {
                         //////from follow //////
                         Set<Terminal> nontermfollow = new HashSet<>();//= nonterm.getfollow()
                         ///////////////////////
                         for (Terminal follow : nontermfollow) {
                             
-                            parsingTable[nonTerminalsMap.get(nonterm.getValue())][terminalsMap.get(follow.getValue())] = prod.toString();
+                            parsingTable[nonTerminalsMap.get(nonterm.toString())][terminalsMap.get(follow.toString())] = prod.toString();
+                            enter=1;
 
                         }
                         
                     } else {
-                        parsingTable[nonTerminalsMap.get(nonterm.getValue())][terminalsMap.get(first.getValue())] = prod.toString();
+                        parsingTable[nonTerminalsMap.get(nonterm.toString())][terminalsMap.get(first.toString())] = prod.toString();
+                         enter=1;
                     }
+                    
+                    if(enter==0){
+                        ////////////from follow////////////////////
+                         Set<Terminal> nontermfollow = new HashSet<>();//= nonterm.getfollow()
+                         ///////////////////////////////////
+                        for(Terminal follow : nontermfollow){
+                            parsingTable[nonTerminalsMap.get(nonterm.toString())][terminalsMap.get(follow.toString())] = "sync";
+                            
+                        
+                    }
+                    
+                            
+                }                    
+                           
                 }
             }
 
         }
+        
+        
+                    
+                     
+                     
+                     
+                     
+                 }
+                 
+                 
+                 
+                 
+             }    
+        
 
-    }
+    
 
    
 
-}
+
