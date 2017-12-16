@@ -1,3 +1,4 @@
+package parser;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,8 +9,9 @@ public class NonTerminal implements Node {
    // private Set<Terminal> Follow = new HashSet<>();
     private Set<Terminal> Follow = null;
     ArrayList<ProductionRule> productions = new ArrayList<ProductionRule>();
-    private Boolean StartSymbol;
+    private Boolean isStartSymbol;
     private NonTerminal ProductionLHS;
+    
     @Override
     public Boolean isTerminal() {
     	return false;
@@ -57,43 +59,35 @@ public class NonTerminal implements Node {
     public Set<Terminal> getFollow(){
     if(Follow !=null) return Follow;
     Follow=new HashSet<>();
+
+    if(this.isStartSymbol()){
+        Terminal dollar=new Terminal("$");
+        Follow.add(dollar);
+    }
     for(ProductionRule prod:productions){
         ArrayList<Node>seq=prod.getSequence();
-        for(int i=0;i<seq.size();i++){
+        for(int i=0; i<seq.size()-1; i++){
                 //flag to check if the NonTerminal is a start symbol to add $ in the follow list
-                NonTerminal node=new NonTerminal();
-                node=(NonTerminal)seq.get(i);
-                if(node.getStartSymbol()){
-                    Terminal dollar=new Terminal("$");
-                      Follow.add(dollar);
+                NonTerminal curNode=(NonTerminal)seq.get(i);
+                NonTerminal NextNode=(NonTerminal)seq.get(i+1);
                 
-                }
-              
-                    NonTerminal NextNode=new NonTerminal();
-                    Set <Terminal> FirstNoEps= null;
-                    NextNode=(NonTerminal)seq.get(i+1);
-                    for(Terminal ter:NextNode.getFirst()){
-                     if(!ter.isEps()){
-                    Follow.addAll(NextNode.getFirst());}
-                      //else if(ter.getValue()=="\\L"){
-                     else if(ter.isEps()){    
-                       // FirstNoEps=new HashSet()<>;
-                         FirstNoEps.addAll(NextNode.getFirst());
-                         FirstNoEps.remove(ter);
-                         Follow.addAll(FirstNoEps);
-                      }
-                     
-                          //NextNode.getFirst().remove(ter);
-                    //Follow.addAll(NextNode.getFirst().remove(ter));}
-                    }
-//                    if(i==seq.get){
-//                    }
-                    if(node==seq.get(seq.size()-1)||NextNode.FirstgoesToEps(NextNode.getFirst())){
-                    Follow.addAll(prod.getLHS().getFollow());
-                    }
+                Set <Terminal> FirstNoEps= new HashSet<Terminal>(NextNode.getFirst());
                     
-                   
-                
+                    for(Terminal ter:FirstNoEps){
+                        if(ter.isEps())
+                            FirstNoEps.remove(ter);
+                    }
+                    curNode.getFollow().addAll(FirstNoEps);
+                    
+//                    if(node==seq.get(seq.size()-1)||NextNode.goesToEps()){
+//                        Follow.addAll(prod.getLHS().getFollow());
+//                    }
+        }
+        for(int i = seq.size()-1; i>= 0; i--) {
+            Node cur = seq.get(i);
+            
+            if(cur.isTerminal() || !((NonTerminal)cur).goesToEps())
+                break;
         }
     }
    return Follow;
@@ -101,11 +95,11 @@ public class NonTerminal implements Node {
     
 
     public void setStartSymbol(Boolean StartSymbol) {
-        this.StartSymbol = StartSymbol;
+        this.isStartSymbol = StartSymbol;
     }
 
-    public Boolean getStartSymbol() {
-        return StartSymbol;
+    public Boolean isStartSymbol() {
+        return isStartSymbol;
     }
     
     // Returns true if this non-terminal X has production rule X -> eps
@@ -116,12 +110,12 @@ public class NonTerminal implements Node {
         }
         return false;
     }
-     public Boolean FirstgoesToEps(Set<Terminal>first) {
-        for(Terminal t: first) {
-          //  if(t.isEps())//msh 3arfa sa7 wala 3'alat momken akteb
-                if("//L".equals(t.getValue()))
-                return true;
-        }
-        return false;
-    }
+//     public Boolean FirstgoesToEps(Set<Terminal>first) {
+//        for(Terminal t: first) {
+//          //  if(t.isEps())//msh 3arfa sa7 wala 3'alat momken akteb
+//                if(t.isEps())
+//                return true;
+//        }
+//        return false;
+//    }
 }
