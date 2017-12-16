@@ -23,7 +23,8 @@ public class ReadFile {
     ArrayList<String> nonTerminals=new ArrayList<>();
     ArrayList<String> rules=new ArrayList<>();
    static HashMap<String, Node> nonTerminal = new HashMap<String, Node>();
-   static Set<Terminal> terminals=new HashSet<>();
+   static Set<String> terminalsName=new HashSet<>();
+   static ArrayList<Terminal> terminals=new ArrayList<>();
     NodeFactory factory=new NodeFactory();
     static boolean isTaken(String k){
         return nonTerminal.containsKey(k);
@@ -56,8 +57,6 @@ public class ReadFile {
             index=lines[i].indexOf('=');
         nonTerminals.add(lines[i].substring(0, index).trim());
         rules.add(lines[i].substring(index+1, lines[i].length()).trim());
-//         System.out.print(nonTerminals.get(i-1)+ "   ");
-//         System.out.println(rules.get(i-1));
         }
     
    } 
@@ -94,7 +93,9 @@ public class ReadFile {
                        ss=ss.substring(1, ss.length()-1);
                        Node t=factory.getTerminal(ss);
                        sequence.add(t);
-                       terminals.add((Terminal)t);
+                       if(terminalsName.add(((Terminal)t).getValue())){
+                           terminals.add((Terminal)t);
+                       }
                    }
                    else{
                      
