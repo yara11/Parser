@@ -72,13 +72,6 @@ public class NonTerminal implements Node {
                 if(i != seq.size()-1) {
                     Node next = seq.get(i+1);
                     Set <Terminal> nextFirst= new HashSet<Terminal>(next.getFirst());
-                    
-                    if((!next.isTerminal() && ((NonTerminal)next).goesToEps()) 
-                            || (next.isTerminal() && ((Terminal)next).isEps()))
-                    for(Terminal n: nextFirst){
-                        if(n.isEps())
-                            nextFirst.remove(n);
-                    }
                     this.Follow.addAll(nextFirst);
                 } else {
                     // flag
@@ -87,6 +80,12 @@ public class NonTerminal implements Node {
             }
         }
     }
+    
+    for(Terminal n: Follow) {
+        if(n.isEps())
+            Follow.remove(n);
+    }
+    
     for(ProductionRule prod:productions){
         ArrayList<Node>seq=prod.getSequence();
 //        for(int i=0; i<seq.size()-1; i++){
