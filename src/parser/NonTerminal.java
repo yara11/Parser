@@ -63,29 +63,55 @@ public class NonTerminal implements Node {
         Terminal dollar=new Terminal("$");
         Follow.add(dollar);
     }
+    for(NonTerminal nt: ReadFile.nonTerminals) {
+        for(ProductionRule prod: nt.getProductions()) {
+            ArrayList<Node> seq = prod.getSequence();
+            for(int i = 0; i < seq.size(); i++) {
+                if(seq.get(i) != this)
+                    continue;
+                if(i != seq.size()-1) {
+                    Node next = seq.get(i+1);
+                    Set <Terminal> nextFirst= new HashSet<Terminal>(next.getFirst());
+                    
+                    if((!next.isTerminal() && ((NonTerminal)next).goesToEps()) 
+                            || (next.isTerminal() && ((Terminal)next).isEps()))
+                    for(Terminal n: nextFirst){
+                        if(n.isEps())
+                            nextFirst.remove(n);
+                    }
+                    this.Follow.addAll(nextFirst);
+                } else {
+                    // flag
+                    this.Follow.addAll(nt.getFollow());
+                }
+            }
+        }
+    }
     for(ProductionRule prod:productions){
         ArrayList<Node>seq=prod.getSequence();
-        for(int i=0; i<seq.size()-1; i++){
-                //flag to check if the NonTerminal is a start symbol to add $ in the follow list
-                NonTerminal curNode=(NonTerminal)seq.get(i);
-                NonTerminal NextNode=(NonTerminal)seq.get(i+1);
-                
-                Set <Terminal> FirstNoEps= new HashSet<Terminal>(NextNode.getFirst());
-                    
-                    for(Terminal ter:FirstNoEps){
-                        if(ter.isEps())
-                            FirstNoEps.remove(ter);
-                    }
-                    curNode.getFollow().addAll(FirstNoEps);
-                    
-//                    if(node==seq.get(seq.size()-1)||NextNode.goesToEps()){
-//                        Follow.addAll(prod.getLHS().getFollow());
+//        for(int i=0; i<seq.size()-1; i++){
+//                //flag to check if the NonTerminal is a start symbol to add $ in the follow list
+//                NonTerminal curNode=(NonTerminal)seq.get(i);
+//                NonTerminal NextNode=(NonTerminal)seq.get(i+1);
+//                
+//                Set <Terminal> FirstNoEps= new HashSet<Terminal>(NextNode.getFirst());
+//                    
+//                    for(Terminal ter:FirstNoEps){
+//                        if(ter.isEps())
+//                            FirstNoEps.remove(ter);
 //                    }
-        }
+//                    curNode.getFollow().addAll(FirstNoEps);
+//                    
+////                    if(node==seq.get(seq.size()-1)||NextNode.goesToEps()){
+////                        Follow.addAll(prod.getLHS().getFollow());
+////                    }
+//        }
         for(int i = seq.size()-1; i>= 0; i--) {
             Node cur = seq.get(i);
-            
-            if(cur.isTerminal() || !((NonTerminal)cur).goesToEps())
+            if(cur.isTerminal())
+                break;
+            ((NonTerminal)cur).getFollow().addAll(Follow);
+            if(!((NonTerminal)cur).goesToEps())
                 break;
         }
     }
@@ -109,7 +135,14 @@ public class NonTerminal implements Node {
         }
         System.out.println("}");
     }
-    
+    public void printFollow() {
+        this.getFollow();
+        System.out.print("FOLLOW(" + this.toString()+"): { ");
+        for(Terminal t: Follow) {
+            System.out.print(t.toString() + ", ");
+        }
+        System.out.println("}");
+    }
     // Returns true if this non-terminal X has production rule X -> eps
     public Boolean goesToEps() {
         for(ProductionRule prod: productions) {
