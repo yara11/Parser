@@ -26,16 +26,11 @@ public class Parser {
         System.out.println("***After eliminating left recursion***");
          System.out.println();
         read.print();
-        System.out.println("\n\n");
-        
+        System.out.println();
+         System.out.println("***First***");
+         System.out.println();
         for(Node nt: ReadFile.nonTerminalsMap.values()) {
             ((NonTerminal)nt).printFirst();
-        }
-//        for(Terminal t:ReadFile.terminals){
-//            System.out.println(t.getValue());
-//        }
-        for(NonTerminal nt:ReadFile.nonTerminals){
-            System.out.println(nt.getName()+" "+nt.isIsStartSymbol());
         }
     }
     
