@@ -3,7 +3,15 @@ import java.util.ArrayList;
 
 public class ProductionRule {
     private ArrayList<Node> sequence = new ArrayList<>();
-    
+    private NonTerminal LHS;
+
+    public NonTerminal getLHS() {
+        return LHS;
+    }
+
+    public void setLHS(NonTerminal LHS) {
+        this.LHS = LHS;
+    }
     public ArrayList<Node> getSequence() {
         return sequence;
     }
