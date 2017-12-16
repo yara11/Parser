@@ -14,7 +14,7 @@ import java.util.TreeSet;
  * @author salma
  */
 public class LeftFactoring {
-    static char c='A';
+  //  static char c='A';
     NodeFactory factory=new NodeFactory();
     ArrayList<Node> newNonTerminals=new ArrayList();
     public boolean isFactored(NonTerminal nT){
@@ -72,13 +72,12 @@ for(ProductionRule p : ProductionRuleSet){
         }
     }
 }
-   newSequence.add(duplicates.get(0).getSequence().get(0));
+   Node duplicate=duplicates.get(0).getSequence().get(0);
+   newSequence.add(duplicate); 
+   
    Node newNode=factory.getNonTerminal();
-   while(ReadFile.isTaken(Character.toString(c))){
-       c++;
-   }
-   ((NonTerminal)newNode).setName(Character.toString(c));
-   c++;
+   
+   ((NonTerminal)newNode).setName("'"+((NonTerminal)nT).getName()+"'" );
    newSequence.add(newNode);
    newProductionRule.setSequence(newSequence);
    productions.add(0, newProductionRule);
