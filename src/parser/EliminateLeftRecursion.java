@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author salma
  */
 public class EliminateLeftRecursion {
-    char c='a';
+   // char c='a';
     NodeFactory factory=new NodeFactory();
     ArrayList<Node> newNonTerminals=new ArrayList();
     void eliminateleftrecursion(){
@@ -36,8 +36,11 @@ public class EliminateLeftRecursion {
         } 
            if(LRProduction!=null){
            Node newNode=factory.getNonTerminal();
-   ((NonTerminal)newNode).setName(Character.toString(c));
-   c++;
+           while(ReadFile.isTaken(Character.toString(LeftFactoring.c))){
+      LeftFactoring.c++;
+   }
+   ((NonTerminal)newNode).setName(Character.toString(LeftFactoring.c));
+   LeftFactoring.c++;
    if(!productions.isEmpty()){
    for(ProductionRule j :productions ){
           j.getSequence().add(newNode);

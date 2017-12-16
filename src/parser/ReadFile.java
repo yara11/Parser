@@ -22,6 +22,9 @@ public class ReadFile {
     ArrayList<String> rules=new ArrayList<>();
    static HashMap<String, Node> nonTerminal = new HashMap<String, Node>();
     NodeFactory factory=new NodeFactory();
+    static boolean isTaken(String k){
+        return nonTerminal.containsKey(k);
+    }
     void concatinateFile(){
     String fileName = "input.txt";
      String line ="";
