@@ -104,15 +104,15 @@ for(ProductionRule p : ProductionRuleSet){
       }
       else{
           leftFactor((NonTerminal)nonTerminal);
+          
       }
      }
         for(Node n:newNonTerminals){
             ReadFile.nonTerminalsMap.put( ((NonTerminal)n).getName(), ((NonTerminal)n));
             ReadFile.nonTerminals.add(((NonTerminal)n));
         }
+        newNonTerminals.clear();
         if(counter!=ReadFile.nonTerminalsMap.size())
             leftFactorAll();
     }
-    
-    
 }

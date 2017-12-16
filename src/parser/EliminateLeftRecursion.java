@@ -67,7 +67,7 @@ public class EliminateLeftRecursion {
        
         for(Node n:newNonTerminals){
             ReadFile.nonTerminalsMap.put( ((NonTerminal)n).getName(), ((NonTerminal)n));
-            ReadFile.nonTerminals.add(((NonTerminal)n));
+           ReadFile.nonTerminals.add(((NonTerminal)n));
         }
     }
 }
