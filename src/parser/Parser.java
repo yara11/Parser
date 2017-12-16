@@ -32,7 +32,7 @@ public class Parser {
         for(Node nt: ReadFile.nonTerminals) {
             ((NonTerminal)nt).printFirst();
         }
-       
+        System.out.println();
         System.out.println("***Follow***");
         System.out.println();
 
