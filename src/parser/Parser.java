@@ -25,6 +25,11 @@ public class Parser {
         System.out.println("***After eliminating left recursion***");
          System.out.println();
         read.print();
+        System.out.println("\n\n");
+        
+        for(Node nt: ReadFile.nonTerminal.values()) {
+            ((NonTerminal)nt).printFirst();
+        }
     }
     
 }

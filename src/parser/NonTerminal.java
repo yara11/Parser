@@ -44,6 +44,15 @@ public class NonTerminal implements Node {
         return First;
     }
     
+    public void printFirst() {
+        this.getFirst();
+        System.out.print("FIRST(" + this.toString()+"): { ");
+        for(Terminal t: First) {
+            System.out.print(t.toString() + ", ");
+        }
+        System.out.println("}");
+    }
+    
     // Returns true if this non-terminal X has production rule X -> eps
     public Boolean goesToEps() {
         for(ProductionRule prod: productions) {
