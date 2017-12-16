@@ -23,6 +23,7 @@ public class ReadFile {
     ArrayList<String> nonTerminalsNames=new ArrayList<>();
     ArrayList<String> rules=new ArrayList<>();
    static HashMap<String, Node> nonTerminalsMap = new HashMap <>();
+    static HashMap<String, Node> terminalsMap = new HashMap <>();
    static Set<String> terminalsNames=new HashSet<>();
    static ArrayList<Terminal> terminals=new ArrayList<>();
     static ArrayList<NonTerminal> nonTerminals=new ArrayList<>();
@@ -93,12 +94,21 @@ public class ReadFile {
                    ss = splitSpace1;
                    ss= ss.trim();
                    if(ss.charAt(0)=='‘'){
+                       ///////////////////////////
                        ss=ss.substring(1, ss.length()-1);
-                       Node t=factory.getTerminal(ss);
-                       sequence.add(t);
-                       if(terminalsNames.add(((Terminal)t).getValue())){
-                           terminals.add((Terminal)t);
+                        if(terminalsNames.add(ss)){
+                          Node t=factory.getTerminal(ss);
+                           sequence.add(t);
+                            terminals.add((Terminal)t);
+                            terminalsMap.put(ss, t);
                        }
+                        else{
+                            sequence.add(terminalsMap.get(ss));
+                        }
+                       ////////////////////////////
+                       
+                       
+                      
                    }
                    else{
                      
