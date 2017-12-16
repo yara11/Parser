@@ -16,6 +16,7 @@ public class Parser {
         LeftFactoring factor=new LeftFactoring();
         factor.leftFactorAll();
          System.out.println();
+         
         System.out.println("***After left factoring***");
          System.out.println();
         read.print();
@@ -33,9 +34,9 @@ public class Parser {
 //        for(Terminal t:ReadFile.terminals){
 //            System.out.println(t.getValue());
 //        }
-//        for(NonTerminal nt:ReadFile.nonTerminals){
-//            System.out.println(nt.getName());
-//        }
+        for(NonTerminal nt:ReadFile.nonTerminals){
+            System.out.println(nt.getName()+" "+nt.isIsStartSymbol());
+        }
     }
     
 }

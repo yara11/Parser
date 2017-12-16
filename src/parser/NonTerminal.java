@@ -9,10 +9,19 @@ public class NonTerminal implements Node {
     private Set<Terminal> Follow = new HashSet<>();
     private String name;
     ArrayList<ProductionRule> productions = new ArrayList<ProductionRule>();
+    private boolean isStartSymbol=false;
 
     @Override
     public Boolean isTerminal() {
     	return false;
+    }
+
+    public void setIsStartSymbol(boolean isStartSymbol) {
+        this.isStartSymbol = isStartSymbol;
+    }
+
+    public boolean isIsStartSymbol() {
+        return isStartSymbol;
     }
 
     public String getName() {

@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author salma
  */
 public class EliminateLeftRecursion {
-   // char c='a';
+   
     NodeFactory factory=new NodeFactory();
     ArrayList<Node> newNonTerminals=new ArrayList();
     void eliminateleftrecursion(){

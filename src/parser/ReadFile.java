@@ -65,6 +65,8 @@ public class ReadFile {
        for(String key:nonTerminalsNames){
            Node nT=factory.getNonTerminal();
            ((NonTerminal) nT).setName(key);
+           if(nonTerminals.isEmpty())
+               ((NonTerminal) nT).setIsStartSymbol(true);
            nonTerminals.add((NonTerminal) nT);
            nonTerminalsMap.put(key,nT);
        }
