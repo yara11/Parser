@@ -20,14 +20,14 @@ import java.util.Set;
  */
 public class ReadFile {
     String file;
-    ArrayList<String> nonTerminals=new ArrayList<>();
+    ArrayList<String> nonTerminalsNames=new ArrayList<>();
     ArrayList<String> rules=new ArrayList<>();
-   static HashMap<String, Node> nonTerminal = new HashMap<String, Node>();
-   static Set<String> terminalsName=new HashSet<>();
+   static HashMap<String, Node> nonTerminals = new HashMap<String, Node>();
+   static Set<String> terminalsNames=new HashSet<>();
    static ArrayList<Terminal> terminals=new ArrayList<>();
     NodeFactory factory=new NodeFactory();
     static boolean isTaken(String k){
-        return nonTerminal.containsKey(k);
+        return nonTerminals.containsKey(k);
     }
     void concatinateFile(){
     String fileName = "input.txt";
@@ -55,17 +55,17 @@ public class ReadFile {
         for(int i=1;i<lines.length;i++)
         {  
             index=lines[i].indexOf('=');
-        nonTerminals.add(lines[i].substring(0, index).trim());
+        nonTerminalsNames.add(lines[i].substring(0, index).trim());
         rules.add(lines[i].substring(index+1, lines[i].length()).trim());
         }
     
    } 
    void fillMap(){
-       for(String key:nonTerminals){
+       for(String key:nonTerminalsNames){
            Node nT=factory.getNonTerminal();
            ((NonTerminal) nT).setName(key);
            
-           nonTerminal.put(key,nT);
+           nonTerminals.put(key,nT);
        }
    }
    void fillProductions(){
@@ -75,10 +75,10 @@ public class ReadFile {
        ArrayList<ProductionRule> productions;
        ProductionRule productionRule;
        Node nT;
-        for(int i=0;i<nonTerminals.size();i++){
+        for(int i=0;i<nonTerminalsNames.size();i++){
             productions=new ArrayList<>();
-            n=nonTerminals.get(i);
-            nT=nonTerminal.get(n);
+            n=nonTerminalsNames.get(i);
+            nT=nonTerminals.get(n);
           rule=rules.get(i);
           splitOr=rule.split("\\|");
            for (String splitOr1 : splitOr) {
@@ -93,13 +93,13 @@ public class ReadFile {
                        ss=ss.substring(1, ss.length()-1);
                        Node t=factory.getTerminal(ss);
                        sequence.add(t);
-                       if(terminalsName.add(((Terminal)t).getValue())){
+                       if(terminalsNames.add(((Terminal)t).getValue())){
                            terminals.add((Terminal)t);
                        }
                    }
                    else{
                      
-                       sequence.add(nonTerminal.get(ss));
+                       sequence.add(nonTerminals.get(ss));
                    }
                }
               productionRule=new ProductionRule();
@@ -111,8 +111,8 @@ public class ReadFile {
        }
    }
    void print(){
-      for (String key : nonTerminal.keySet()) {
-      Node n= nonTerminal.get(key);
+      for (String key : nonTerminals.keySet()) {
+      Node n= nonTerminals.get(key);
       System.out.print(((NonTerminal)n).getName()+" = ");
       ArrayList<ProductionRule> a=((NonTerminal)n).productions;
        for(ProductionRule production:a){

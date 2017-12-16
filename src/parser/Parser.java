@@ -27,7 +27,7 @@ public class Parser {
         read.print();
         System.out.println("\n\n");
         
-        for(Node nt: ReadFile.nonTerminal.values()) {
+        for(Node nt: ReadFile.nonTerminals.values()) {
             ((NonTerminal)nt).printFirst();
         }
         for(Terminal t:ReadFile.terminals){
