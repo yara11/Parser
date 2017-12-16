@@ -6,15 +6,40 @@ import java.util.Set;
 public class NonTerminal implements Node {
     
     private Set<Terminal> First = null;
+
    // private Set<Terminal> Follow = new HashSet<>();
     private Set<Terminal> Follow = null;
     ArrayList<ProductionRule> productions = new ArrayList<ProductionRule>();
-    private Boolean isStartSymbol;
-    private NonTerminal ProductionLHS;
+    private Boolean isStartSymbol = false;
+    private String name;
     
     @Override
     public Boolean isTerminal() {
     	return false;
+    }
+
+    public void setIsStartSymbol(boolean isStartSymbol) {
+        this.isStartSymbol = isStartSymbol;
+    }
+
+    public boolean isIsStartSymbol() {
+        return isStartSymbol;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<ProductionRule> getProductions() {
+        return productions;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setProductions(ArrayList<ProductionRule> productions) {
+        this.productions = productions;
     }
     
     @Override
@@ -25,37 +50,11 @@ public class NonTerminal implements Node {
         First = new HashSet<>();
         
         for(ProductionRule prod: productions) {
-            ArrayList<Node> seq = prod.getSequence();
-            for(Node node: seq) {
-                // Either this is the first node, or the preceding nodes
-                // go to epsilon
-                
-                // Compute FIRST of this node
-                First.addAll(node.getFirst());
-                // If this node goes to epsilon, continue to the next node
-                // if (X -> Y1Y2..Yn and Yj = a and Y1..j-1->eps)
-                // then a is in FIRST(X)
-                if(node.isTerminal() || !((NonTerminal) node).goesToEps())
-                    break;
-            }
+            First.addAll(prod.getFirst());
         }
         return First;
     }
-    //////first without epsilon to cmpute the follow
-    ///////////////////////function 3'alat msh 3arfa mofida wala la2
-//    public ArrayList<Node>FirstNoEps(ArrayList<Node>first){
-//    ArrayList<Node> FirstNoEps = new ArrayList<Node>();
-//    FirstNoEps.addAll(first);
-//    for(Node node:FirstNoEps){
-//    if("\\L".equals(((Terminal)node).getValue())){
-//    FirstNoEps.remove(node);
-//    }
-//    }
-//    return FirstNoEps;
-//    }
-    ////////////////////////////////////////////////////////////////////////////////////////
-    //////////////Follow Computing
-    //@Override
+    
     public Set<Terminal> getFollow(){
     if(Follow !=null) return Follow;
     Follow=new HashSet<>();
@@ -102,6 +101,15 @@ public class NonTerminal implements Node {
         return isStartSymbol;
     }
     
+    public void printFirst() {
+        this.getFirst();
+        System.out.print("FIRST(" + this.toString()+"): { ");
+        for(Terminal t: First) {
+            System.out.print(t.toString() + ", ");
+        }
+        System.out.println("}");
+    }
+    
     // Returns true if this non-terminal X has production rule X -> eps
     public Boolean goesToEps() {
         for(ProductionRule prod: productions) {
@@ -110,12 +118,10 @@ public class NonTerminal implements Node {
         }
         return false;
     }
-//     public Boolean FirstgoesToEps(Set<Terminal>first) {
-//        for(Terminal t: first) {
-//          //  if(t.isEps())//msh 3arfa sa7 wala 3'alat momken akteb
-//                if(t.isEps())
-//                return true;
-//        }
-//        return false;
-//    }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
+    
 }
