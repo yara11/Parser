@@ -16,8 +16,8 @@ public class EliminateLeftRecursion {
     NodeFactory factory=new NodeFactory();
     ArrayList<Node> newNonTerminals=new ArrayList();
     void eliminateleftrecursion(){
-        for (String key : ReadFile.nonTerminals.keySet()) {
-            Node nonTerminal= ReadFile.nonTerminals.get(key);
+        for (String key : ReadFile.nonTerminalsMap.keySet()) {
+            Node nonTerminal= ReadFile.nonTerminalsMap.get(key);
             ArrayList<ProductionRule> productions=((NonTerminal)nonTerminal).productions;
             ArrayList<ProductionRule> copy = new ArrayList<>();
             ProductionRule LRProduction=null;
@@ -68,7 +68,7 @@ public class EliminateLeftRecursion {
         }
        
         for(Node n:newNonTerminals){
-            ReadFile.nonTerminals.put( ((NonTerminal)n).getName(), ((NonTerminal)n));
+            ReadFile.nonTerminalsMap.put( ((NonTerminal)n).getName(), ((NonTerminal)n));
         }
     }
 }

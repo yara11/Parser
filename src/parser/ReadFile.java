@@ -22,12 +22,13 @@ public class ReadFile {
     String file;
     ArrayList<String> nonTerminalsNames=new ArrayList<>();
     ArrayList<String> rules=new ArrayList<>();
-   static HashMap<String, Node> nonTerminals = new HashMap<String, Node>();
+   static HashMap<String, Node> nonTerminalsMap = new HashMap <>();
    static Set<String> terminalsNames=new HashSet<>();
    static ArrayList<Terminal> terminals=new ArrayList<>();
+    static ArrayList<NonTerminal> nonTerminals=new ArrayList<>();
     NodeFactory factory=new NodeFactory();
     static boolean isTaken(String k){
-        return nonTerminals.containsKey(k);
+        return nonTerminalsMap.containsKey(k);
     }
     void concatinateFile(){
     String fileName = "input.txt";
@@ -64,8 +65,8 @@ public class ReadFile {
        for(String key:nonTerminalsNames){
            Node nT=factory.getNonTerminal();
            ((NonTerminal) nT).setName(key);
-           
-           nonTerminals.put(key,nT);
+           nonTerminals.add((NonTerminal) nT);
+           nonTerminalsMap.put(key,nT);
        }
    }
    void fillProductions(){
@@ -78,7 +79,7 @@ public class ReadFile {
         for(int i=0;i<nonTerminalsNames.size();i++){
             productions=new ArrayList<>();
             n=nonTerminalsNames.get(i);
-            nT=nonTerminals.get(n);
+            nT=nonTerminalsMap.get(n);
           rule=rules.get(i);
           splitOr=rule.split("\\|");
            for (String splitOr1 : splitOr) {
@@ -99,7 +100,7 @@ public class ReadFile {
                    }
                    else{
                      
-                       sequence.add(nonTerminals.get(ss));
+                       sequence.add(nonTerminalsMap.get(ss));
                    }
                }
               productionRule=new ProductionRule();
@@ -111,8 +112,8 @@ public class ReadFile {
        }
    }
    void print(){
-      for (String key : nonTerminals.keySet()) {
-      Node n= nonTerminals.get(key);
+      for (String key : nonTerminalsMap.keySet()) {
+      Node n= nonTerminalsMap.get(key);
       System.out.print(((NonTerminal)n).getName()+" = ");
       ArrayList<ProductionRule> a=((NonTerminal)n).productions;
        for(ProductionRule production:a){

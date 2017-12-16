@@ -95,8 +95,8 @@ for(ProductionRule p : ProductionRuleSet){
     }
     void leftFactorAll(){
         int counter=0;
-        for (String key : ReadFile.nonTerminals.keySet()) {
-      Node nonTerminal= ReadFile.nonTerminals.get(key);
+        for (String key : ReadFile.nonTerminalsMap.keySet()) {
+      Node nonTerminal= ReadFile.nonTerminalsMap.get(key);
       if(isFactored((NonTerminal)nonTerminal))
       {  
           counter++;
@@ -108,9 +108,9 @@ for(ProductionRule p : ProductionRuleSet){
       }
      }
         for(Node n:newNonTerminals){
-            ReadFile.nonTerminals.put( ((NonTerminal)n).getName(), ((NonTerminal)n));
+            ReadFile.nonTerminalsMap.put( ((NonTerminal)n).getName(), ((NonTerminal)n));
         }
-        if(counter!=ReadFile.nonTerminals.size())
+        if(counter!=ReadFile.nonTerminalsMap.size())
             leftFactorAll();
     }
     

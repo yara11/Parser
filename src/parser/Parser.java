@@ -27,12 +27,15 @@ public class Parser {
         read.print();
         System.out.println("\n\n");
         
-        for(Node nt: ReadFile.nonTerminals.values()) {
+        for(Node nt: ReadFile.nonTerminalsMap.values()) {
             ((NonTerminal)nt).printFirst();
         }
-        for(Terminal t:ReadFile.terminals){
-            System.out.println(t.getValue());
-        }
+//        for(Terminal t:ReadFile.terminals){
+//            System.out.println(t.getValue());
+//        }
+//        for(NonTerminal nt:ReadFile.nonTerminals){
+//            System.out.println(nt.getName());
+//        }
     }
     
 }
