@@ -29,12 +29,13 @@ public class Parser {
         System.out.println();
          System.out.println("***First***");
          System.out.println();
-        for(Node nt: ReadFile.nonTerminalsMap.values()) {
+        for(Node nt: ReadFile.nonTerminals) {
             ((NonTerminal)nt).printFirst();
         }
+       
+        System.out.println("***Follow***");
         System.out.println();
-         System.out.println("***FOllow***");
-         System.out.println();
+
         for(Node nt: ReadFile.nonTerminals) {
             ((NonTerminal)nt).printFollow();
         }
