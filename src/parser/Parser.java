@@ -32,6 +32,16 @@ public class Parser {
         for(Node nt: ReadFile.nonTerminalsMap.values()) {
             ((NonTerminal)nt).printFirst();
         }
+        System.out.println("\n\n");
+        for(Node nt: ReadFile.nonTerminalsMap.values()) {
+            ((NonTerminal)nt).printFollow();
+        }
+//        for(Terminal t:ReadFile.terminals){
+//            System.out.println(t.getValue());
+//        }
+//        for(NonTerminal nt:ReadFile.nonTerminals){
+//            System.out.println(nt.getName()+" "+nt.isIsStartSymbol());
+//        }
     }
     
 }

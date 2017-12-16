@@ -7,6 +7,10 @@ public class ProductionRule {
     private NonTerminal LHS;
     private ArrayList<Node> sequence = new ArrayList<>();
 
+    public NonTerminal getLHS() {
+        return LHS;
+    }
+
     public void setLHS(NonTerminal LHS) {
         this.LHS = LHS;
     }

@@ -32,11 +32,14 @@ public class Terminal implements Node {
     public Set<Terminal> getFirst() {
         return new HashSet<>(Arrays.asList(this));
     }
-    
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     @Override
     public String toString() {
         return value;
     }
-
     
 }
