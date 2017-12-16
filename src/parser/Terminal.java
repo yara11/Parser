@@ -1,4 +1,4 @@
-
+package parser;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +14,11 @@ public class Terminal implements Node {
         if(this.value.equals(Literals.EPS)){
             this.isEpsilon = true;
         }
+        
+    }
+
+    public String getValue() {
+        return value;
     }
     @Override
     public Boolean isTerminal() {
@@ -32,4 +37,6 @@ public class Terminal implements Node {
     public String toString() {
         return value;
     }
+
+    
 }

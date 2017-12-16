@@ -1,3 +1,4 @@
+package parser;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +13,22 @@ public class NonTerminal implements Node {
     @Override
     public Boolean isTerminal() {
     	return false;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<ProductionRule> getProductions() {
+        return productions;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setProductions(ArrayList<ProductionRule> productions) {
+        this.productions = productions;
     }
     
     @Override
@@ -41,4 +58,6 @@ public class NonTerminal implements Node {
     public String toString() {
         return name;
     }
+    
+    
 }

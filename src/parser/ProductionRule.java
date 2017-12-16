@@ -1,4 +1,4 @@
-
+package parser;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -6,6 +6,14 @@ import java.util.Set;
 public class ProductionRule {
     private NonTerminal LHS;
     private ArrayList<Node> sequence = new ArrayList<>();
+
+    public void setLHS(NonTerminal LHS) {
+        this.LHS = LHS;
+    }
+
+    public void setSequence(ArrayList<Node> sequence) {
+        this.sequence = sequence;
+    }
     
     public ArrayList<Node> getSequence() {
         return sequence;
