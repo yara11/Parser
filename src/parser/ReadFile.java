@@ -11,6 +11,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -21,6 +23,7 @@ public class ReadFile {
     ArrayList<String> nonTerminals=new ArrayList<>();
     ArrayList<String> rules=new ArrayList<>();
    static HashMap<String, Node> nonTerminal = new HashMap<String, Node>();
+   static Set<Terminal> terminals=new HashSet<>();
     NodeFactory factory=new NodeFactory();
     static boolean isTaken(String k){
         return nonTerminal.containsKey(k);
@@ -91,6 +94,7 @@ public class ReadFile {
                        ss=ss.substring(1, ss.length()-1);
                        Node t=factory.getTerminal(ss);
                        sequence.add(t);
+                       terminals.add((Terminal)t);
                    }
                    else{
                      

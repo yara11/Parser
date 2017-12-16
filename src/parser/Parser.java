@@ -30,6 +30,9 @@ public class Parser {
         for(Node nt: ReadFile.nonTerminal.values()) {
             ((NonTerminal)nt).printFirst();
         }
+        for(Terminal t:ReadFile.terminals){
+            System.out.println(t.getValue());
+        }
     }
     
 }
