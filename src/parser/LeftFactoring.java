@@ -108,6 +108,7 @@ for(ProductionRule p : ProductionRuleSet){
      }
         for(Node n:newNonTerminals){
             ReadFile.nonTerminalsMap.put( ((NonTerminal)n).getName(), ((NonTerminal)n));
+            ReadFile.nonTerminals.add(((NonTerminal)n));
         }
         if(counter!=ReadFile.nonTerminalsMap.size())
             leftFactorAll();
