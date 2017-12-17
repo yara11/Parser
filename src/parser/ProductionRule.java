@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ProductionRule {
+
     private NonTerminal LHS;
     private ArrayList<Node> sequence = new ArrayList<>();
 
@@ -17,6 +18,7 @@ public class ProductionRule {
 
     public void setSequence(ArrayList<Node> sequence) {
         this.sequence = sequence;
+
     }
     
     public ArrayList<Node> getSequence() {
@@ -33,9 +35,10 @@ public class ProductionRule {
     public String toString() {
         String ret = "";
         for(Node n: sequence) {
-            ret += n.toString();
+            ret += n.toString()+" ";
         }
-        return ret;
+      
+        return ret.trim();
     }
     
     public Set<Terminal> getFirst() {
