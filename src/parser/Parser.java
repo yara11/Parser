@@ -6,19 +6,8 @@ import java.util.Stack;
 
 public class Parser {
 
-//    public static void main(String[] args) {
-//       
-//       
-//    }
-    //parse table
-    //TO DO!
-    static String Table[][] = new String[100][100];
-    /////////////
     static Stack<String> stack = new Stack<String>();
-    //static ArrayList<String> input = new ArrayList<String>();
     static ArrayList<String> output = new ArrayList<String>();
-    public static HashMap<String, Integer> Terminals = new HashMap<>();
-    public static HashMap<String, Integer> NonTerminals = new HashMap<>();
 
     void pushIntoStack(String production) {
         String[] splited = production.split("\\s+");
@@ -28,12 +17,12 @@ public class Parser {
     }
 
     int get_row(String name) {
-        return NonTerminals.get(name);
+        return ParsingTable.nonTerminalsMap.get(name);
 
     }
 
     int get_column(String name) {
-        return Terminals.get(name);
+        return ParsingTable.terminalsMap.get(name);
     }
 
     static String insert_$_sign(String input) {
@@ -43,7 +32,7 @@ public class Parser {
     }
 
     boolean isANonTerminal(String symbol) {
-        if (NonTerminals.containsKey(symbol)) {
+        if (ParsingTable.nonTerminalsMap.containsKey(symbol)) {
             return true;
         } else {
             return false;
@@ -73,7 +62,7 @@ public class Parser {
         int index = 0;
         string_in = splited[index];
         while (!stack.empty()) {
-           
+
             //if match character with a terminal in the stack
             if (string_in.equals(stack.peek())) {
                 String temp = string_in;
@@ -91,7 +80,7 @@ public class Parser {
             } else if (isANonTerminal(stack.peek())) {
                 int row = get_row(stack.peek());
                 int column = get_column((string_in));
-                String production = Table[row][column];
+                String production = ParsingTable.parsingTable[row][column];
 
                 //if production goes to epsilon
                 if (production.equals(Literals.EPS.toString())) {
@@ -109,7 +98,7 @@ public class Parser {
                     stack.pop();
                     output.add("");
                 } else {
-                    output.add(stack.peek()+"--> "+production);
+                    output.add(stack.peek() + "--> " + production);
                     stack.pop();
                     pushIntoStack(production);
 
@@ -122,6 +111,55 @@ public class Parser {
             }
 
         }
-
     }
 }
+
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String[] args) {
+//        // TODO code application logic here
+//        ReadFile read=new ReadFile();
+//        read.read();
+//        System.out.println();
+//        System.out.println("***After read***");
+//         System.out.println();
+//        read.print();
+//        LeftFactoring factor=new LeftFactoring();
+//        factor.leftFactorAll();
+//         System.out.println();
+//         
+//        System.out.println("***After left factoring***");
+//         System.out.println();
+//        read.print();
+//        EliminateLeftRecursion eliminateLeftRecursion=new EliminateLeftRecursion();
+//        eliminateLeftRecursion.eliminateleftrecursion();
+//         System.out.println();
+//        System.out.println("***After eliminating left recursion***");
+//         System.out.println();
+//        read.print();
+//        NodeFactory factory=new NodeFactory();
+//        Node dollar=factory.getTerminal("$");
+//        ReadFile.terminals.add((Terminal)dollar);
+//        ReadFile.terminalsMap.put("$", dollar);
+//        System.out.println();
+//         System.out.println("***First***");
+//         System.out.println();
+//        for(Node nt: ReadFile.nonTerminals) {
+//            ((NonTerminal)nt).printFirst();
+//        }
+//        System.out.println();
+//        System.out.println("***Follow***");
+//        System.out.println();
+//
+//        for(Node nt: ReadFile.nonTerminals) {
+//            ((NonTerminal)nt).printFollow();
+//        }
+//        
+//        ParsingTable.constructParsingTable();
+//        System.out.println();
+//        System.out.println("***Parsing Table***");
+//        ParsingTable.printParsingTable();
+//
+//    }
+//}

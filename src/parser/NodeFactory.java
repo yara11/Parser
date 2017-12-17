@@ -1,3 +1,4 @@
+package parser;
 public class NodeFactory {
 
 	public Node getTerminal(String val) {
