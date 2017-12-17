@@ -73,7 +73,7 @@ public class Parser {
         int index = 0;
         string_in = splited[index];
         while (!stack.empty()) {
-            System.out.println("hi");
+           
             //if match character with a terminal in the stack
             if (string_in.equals(stack.peek())) {
                 String temp = string_in;
@@ -109,7 +109,7 @@ public class Parser {
                     stack.pop();
                     output.add("");
                 } else {
-                    output.add(production);
+                    output.add(stack.peek()+"--> "+production);
                     stack.pop();
                     pushIntoStack(production);
 
