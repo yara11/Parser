@@ -37,7 +37,7 @@ public class EliminateLeftRecursion {
            if(LRProduction!=null){
            Node newNode=factory.getNonTerminal();
           
-   ((NonTerminal)newNode).setName("'"+((NonTerminal)nonTerminal).getName()+"'");
+   ((NonTerminal)newNode).setName("`"+((NonTerminal)nonTerminal).getName()+"`");
    
    if(!productions.isEmpty()){
    for(ProductionRule j :productions ){
