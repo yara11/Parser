@@ -43,6 +43,11 @@ public class Parser {
         for(Node nt: ReadFile.nonTerminals) {
             ((NonTerminal)nt).printFollow();
         }
+        
+        ParsingTable.constructParsingTable();
+        System.out.println();
+        System.out.println("***Parsing Table***");
+        ParsingTable.printParsingTable();
     }
     
 }
