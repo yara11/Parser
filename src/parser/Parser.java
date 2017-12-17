@@ -9,19 +9,19 @@ public class Parser {
     static Stack<String> stack = new Stack<String>();
     static ArrayList<String> output = new ArrayList<String>();
 
-    void pushIntoStack(String production) {
+    static void pushIntoStack(String production) {
         String[] splited = production.split("\\s+");
         for (int i = splited.length - 1; i >= 0; i--) {
             stack.push(splited[i]);
         }
     }
 
-    int get_row(String name) {
+    static int get_row(String name) {
         return ParsingTable.nonTerminalsMap.get(name);
 
     }
 
-    int get_column(String name) {
+   static int get_column(String name) {
         return ParsingTable.terminalsMap.get(name);
     }
 
@@ -31,7 +31,7 @@ public class Parser {
         return input;
     }
 
-    boolean isANonTerminal(String symbol) {
+    static boolean isANonTerminal(String symbol) {
         if (ParsingTable.nonTerminalsMap.containsKey(symbol)) {
             return true;
         } else {
@@ -46,7 +46,7 @@ public class Parser {
         return input;
     }
 
-    void parse(String input_string, String start_symbol) {
+   static void parse(String input_string, String start_symbol) {
         String input_string_new = input_string;
         String terminated_input = insert_$_sign(input_string_new);
         //input.add(terminated_input);
@@ -87,7 +87,7 @@ public class Parser {
                     stack.pop();
                     output.add(production);
                 } //empty production
-                else if (production.equals("")) {
+                else if (production.equals("null")) {
                     output.add("Error:(illegal" + stack.peek() + ")" + " – discard " + string_in);
                     if (++index < splited.length) {
                         string_in = splited[index];
@@ -114,52 +114,3 @@ public class Parser {
     }
 }
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String[] args) {
-//        // TODO code application logic here
-//        ReadFile read=new ReadFile();
-//        read.read();
-//        System.out.println();
-//        System.out.println("***After read***");
-//         System.out.println();
-//        read.print();
-//        LeftFactoring factor=new LeftFactoring();
-//        factor.leftFactorAll();
-//         System.out.println();
-//         
-//        System.out.println("***After left factoring***");
-//         System.out.println();
-//        read.print();
-//        EliminateLeftRecursion eliminateLeftRecursion=new EliminateLeftRecursion();
-//        eliminateLeftRecursion.eliminateleftrecursion();
-//         System.out.println();
-//        System.out.println("***After eliminating left recursion***");
-//         System.out.println();
-//        read.print();
-//        NodeFactory factory=new NodeFactory();
-//        Node dollar=factory.getTerminal("$");
-//        ReadFile.terminals.add((Terminal)dollar);
-//        ReadFile.terminalsMap.put("$", dollar);
-//        System.out.println();
-//         System.out.println("***First***");
-//         System.out.println();
-//        for(Node nt: ReadFile.nonTerminals) {
-//            ((NonTerminal)nt).printFirst();
-//        }
-//        System.out.println();
-//        System.out.println("***Follow***");
-//        System.out.println();
-//
-//        for(Node nt: ReadFile.nonTerminals) {
-//            ((NonTerminal)nt).printFollow();
-//        }
-//        
-//        ParsingTable.constructParsingTable();
-//        System.out.println();
-//        System.out.println("***Parsing Table***");
-//        ParsingTable.printParsingTable();
-//
-//    }
-//}

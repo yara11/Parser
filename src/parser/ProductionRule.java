@@ -35,9 +35,10 @@ public class ProductionRule {
     public String toString() {
         String ret = "";
         for(Node n: sequence) {
-            ret += n.toString();
+            ret += n.toString()+" ";
         }
-        return ret;
+      
+        return ret.trim();
     }
     
     public Set<Terminal> getFirst() {
