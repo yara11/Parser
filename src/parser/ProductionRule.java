@@ -31,7 +31,7 @@ public class ProductionRule {
     
     @Override
     public String toString() {
-        String ret = LHS + "->";
+        String ret = "";
         for(Node n: sequence) {
             ret += n.toString();
         }

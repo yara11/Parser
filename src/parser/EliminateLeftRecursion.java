@@ -59,6 +59,7 @@ public class EliminateLeftRecursion {
             Node epsilon=factory.getTerminal(Literals.EPS.toString());
             epsSequence.add(epsilon);
             eps.setSequence(epsSequence);
+            eps.setLHS((NonTerminal)newNode);
             newProductions.add(eps);
            ((NonTerminal)newNode).setProductions(newProductions);
            newNonTerminals.add(newNode);
@@ -68,6 +69,11 @@ public class EliminateLeftRecursion {
         for(Node n:newNonTerminals){
             ReadFile.nonTerminalsMap.put( ((NonTerminal)n).getName(), ((NonTerminal)n));
            ReadFile.nonTerminals.add(((NonTerminal)n));
+        }
+        for(NonTerminal nT:ReadFile.nonTerminals){
+            for(ProductionRule p:nT.productions){
+                p.setLHS(nT);
+            }
         }
     }
 }

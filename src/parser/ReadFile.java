@@ -135,6 +135,7 @@ public class ReadFile {
                    System.out.print(((Terminal)n3).getValue()+" "); 
                 else System.out.print(((NonTerminal)n3).getName()+" "); 
             }
+            System.out.print("LHS is:"+production.getLHS().getName()); 
             System.out.print("| "); 
        }
        System.out.println();

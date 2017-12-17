@@ -26,6 +26,9 @@ public class Parser {
         System.out.println("***After eliminating left recursion***");
          System.out.println();
         read.print();
+        NodeFactory factory=new NodeFactory();
+        Node dollar=factory.getTerminal("$");
+        ReadFile.terminals.add((Terminal)dollar);
         System.out.println();
          System.out.println("***First***");
          System.out.println();

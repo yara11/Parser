@@ -111,6 +111,11 @@ for(ProductionRule p : ProductionRuleSet){
             ReadFile.nonTerminalsMap.put( ((NonTerminal)n).getName(), ((NonTerminal)n));
             ReadFile.nonTerminals.add(((NonTerminal)n));
         }
+        for(NonTerminal nT:ReadFile.nonTerminals){
+            for(ProductionRule p:nT.productions){
+                p.setLHS(nT);
+            }
+        }
         newNonTerminals.clear();
         if(counter!=ReadFile.nonTerminalsMap.size())
             leftFactorAll();
