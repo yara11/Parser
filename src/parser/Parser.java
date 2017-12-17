@@ -29,6 +29,7 @@ public class Parser {
         NodeFactory factory=new NodeFactory();
         Node dollar=factory.getTerminal("$");
         ReadFile.terminals.add((Terminal)dollar);
+        ReadFile.terminalsMap.put("$", dollar);
         System.out.println();
          System.out.println("***First***");
          System.out.println();
