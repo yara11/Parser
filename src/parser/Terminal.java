@@ -11,7 +11,7 @@ public class Terminal implements Node {
     
     public Terminal(String value) {
     	this.value = value;
-        if(this.value.equals(Literals.EPS)){
+        if(this.value.equals(Literals.EPS.toString())){
             this.isEpsilon = true;
         }
         

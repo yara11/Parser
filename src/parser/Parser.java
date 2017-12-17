@@ -32,8 +32,8 @@ public class Parser {
         for(Node nt: ReadFile.nonTerminalsMap.values()) {
             ((NonTerminal)nt).printFirst();
         }
-        System.out.println("\n\n");
-        for(Node nt: ReadFile.nonTerminalsMap.values()) {
+        System.out.println("");
+        for(Node nt: ReadFile.nonTerminals) {
             ((NonTerminal)nt).printFollow();
         }
 //        for(Terminal t:ReadFile.terminals){
