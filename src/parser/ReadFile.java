@@ -124,8 +124,8 @@ public class ReadFile {
        }
    }
    void print(){
-      for (String key : nonTerminalsMap.keySet()) {
-      Node n= nonTerminalsMap.get(key);
+      for (Node n : nonTerminals) {
+      
       System.out.print(((NonTerminal)n).getName()+" = ");
       ArrayList<ProductionRule> a=((NonTerminal)n).productions;
        for(ProductionRule production:a){
