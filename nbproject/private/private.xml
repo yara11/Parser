@@ -3,6 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/Terminal.java</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/Main.java</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/Node.java</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/ParsingTable.java</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/ReadFile.java</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/ProductionRule.java</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/Literals.java</file>
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 202804f7b7e70c2733b67f08bbb4933fe34d2689
+            <file>file:/home/yomnabarakat/Desktop/Parser/test/parser/ParserTest.java</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/ProductionRuleComparator.java</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/tokens.txt</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/Parser.java</file>
+<<<<<<< HEAD
+=======
+=======
+            <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/Parser.java</file>
+>>>>>>> 340bb0fd0c80e5de7131111b08a4c71e1008112f
+            <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/ReadFile.java</file>
+>>>>>>> ba507446e2dcf4c0af7b3ebe4dfeae87bc64d01d
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/NonTerminal.java</file>
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/Terminal.java</file>
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/NodeFactory.java</file>
@@ -11,12 +37,19 @@
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/ParsingTable.java</file>
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/LeftFactoring.java</file>
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/Literals.java</file>
+<<<<<<< HEAD
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/Node.java</file>
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/input.txt</file>
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/Main.java</file>
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/EliminateLeftRecursion.java</file>
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/ProductionRuleComparator.java</file>
             <file>file:/C:/Users/salma/Documents/GitHub/Parser/src/parser/ReadFile.java</file>
+=======
+=======
+>>>>>>> d00adb22a1c230b5289ee13f3f9f069e8e3560ed
+>>>>>>> 340bb0fd0c80e5de7131111b08a4c71e1008112f
+>>>>>>> 202804f7b7e70c2733b67f08bbb4933fe34d2689
+>>>>>>> ba507446e2dcf4c0af7b3ebe4dfeae87bc64d01d
         </group>
     </open-files>
 </project-private>
