@@ -6,6 +6,7 @@ import java.util.Stack;
 
 public class Parser {
 
+    public static HashMap<String, String> tokens = new HashMap<>();
     static Stack<String> stack = new Stack<String>();
     static ArrayList<String> output = new ArrayList<String>();
 
@@ -21,7 +22,7 @@ public class Parser {
 
     }
 
-   static int get_column(String name) {
+    static int get_column(String name) {
         return ParsingTable.terminalsMap.get(name);
     }
 
@@ -46,8 +47,19 @@ public class Parser {
         return input;
     }
 
-   static void parse(String input_string, String start_symbol) {
-        String input_string_new = input_string;
+    static String convert_to_tokens(String lexeme) {
+        String output = "";
+        String[] splited = lexeme.split("\\s+");
+        for (int i = 0; i < splited.length; i++) {
+            String s = tokens.get(splited[i]);
+            output += s + " ";
+
+        }
+        return output.trim();
+    }
+
+    static void parse(String input_string, String start_symbol) {
+        String input_string_new = convert_to_tokens(input_string);
         String terminated_input = insert_$_sign(input_string_new);
         //input.add(terminated_input);
         String string_in;
@@ -111,6 +123,11 @@ public class Parser {
             }
 
         }
+        //clear output to be ready for another 
+        for(int i=0;i<output.size();i++)
+        {
+            System.out.println(Parser.output.get(i));
+        }
+        output.clear();
     }
 }
-

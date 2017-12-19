@@ -23,19 +23,19 @@ public class Main {
         System.out.println("***After read***");
          System.out.println();
         read.print();
-        //LeftFactoring factor=new LeftFactoring();
-        //factor.leftFactorAll();
-         //System.out.println();
+        LeftFactoring factor=new LeftFactoring();
+        factor.leftFactorAll();
+         System.out.println();
          
-        //System.out.println("***After left factoring***");
-         //System.out.println();
-        //read.print();
-        //EliminateLeftRecursion eliminateLeftRecursion=new EliminateLeftRecursion();
-        //eliminateLeftRecursion.eliminateleftrecursion();
-         //System.out.println();
-        //System.out.println("***After eliminating left recursion***");
-         //System.out.println();
-        //read.print();
+        System.out.println("***After left factoring***");
+         System.out.println();
+        read.print();
+        EliminateLeftRecursion eliminateLeftRecursion=new EliminateLeftRecursion();
+        eliminateLeftRecursion.eliminateleftrecursion();
+         System.out.println();
+        System.out.println("***After eliminating left recursion***");
+         System.out.println();
+        read.print();
         NodeFactory factory=new NodeFactory();
         Node dollar=factory.getTerminal("$");
         ReadFile.terminals.add((Terminal)dollar);
@@ -60,12 +60,14 @@ public class Main {
         ParsingTable.printParsingTable();
          
         
+        Parser.tokens.put("int", "int");
+        Parser.tokens.put("x", "id");
+        Parser.tokens.put(";", ";");
+        
         System.out.println("***Parsing result***");
-        Parser.parse("int id ;", "METHOD_BODY");
-        for(int i=0;i<Parser.output.size();i++)
-        {
-            System.out.println(Parser.output.get(i));
-        }
+        Parser.parse("int x ;", "METHOD_BODY");
+                
+       
     }
 }
 
