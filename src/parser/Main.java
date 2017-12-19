@@ -15,7 +15,7 @@ public class Main {
        /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
         ReadFile read=new ReadFile();
         read.read();
@@ -59,14 +59,11 @@ public class Main {
         System.out.println("***Parsing Table***");
         ParsingTable.printParsingTable();
          
-        
-        Parser.tokens.put("int", "int");
-        Parser.tokens.put("x", "id");
-        Parser.tokens.put(";", ";");
-        
+         Parser.readTokens();
+       
         System.out.println("***Parsing result***");
         Parser.parse("int x ;", "METHOD_BODY");
-                
+       
        
     }
 }

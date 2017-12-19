@@ -1,5 +1,9 @@
 package parser;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
@@ -9,6 +13,18 @@ public class Parser {
     public static HashMap<String, String> tokens = new HashMap<>();
     static Stack<String> stack = new Stack<String>();
     static ArrayList<String> output = new ArrayList<String>();
+
+    static void readTokens() throws IOException {
+        String file = "tokens.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] splited = line.split("\\s+");
+                tokens.put(splited[0].trim(), splited[1].trim());
+
+            }
+        }
+    }
 
     static void pushIntoStack(String production) {
         String[] splited = production.split("\\s+");
@@ -124,8 +140,7 @@ public class Parser {
 
         }
         //clear output to be ready for another 
-        for(int i=0;i<output.size();i++)
-        {
+        for (int i = 0; i < output.size(); i++) {
             System.out.println(Parser.output.get(i));
         }
         output.clear();
