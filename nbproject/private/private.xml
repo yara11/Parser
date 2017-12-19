@@ -5,12 +5,14 @@
         <group>
             <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/Terminal.java</file>
             <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/Main.java</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/Node.java</file>
             <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/ParsingTable.java</file>
             <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/ReadFile.java</file>
             <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/ProductionRule.java</file>
             <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/Literals.java</file>
             <file>file:/home/yomnabarakat/Desktop/Parser/test/parser/ParserTest.java</file>
             <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/ProductionRuleComparator.java</file>
+            <file>file:/home/yomnabarakat/Desktop/Parser/tokens.txt</file>
             <file>file:/home/yomnabarakat/Desktop/Parser/src/parser/Parser.java</file>
         </group>
     </open-files>
